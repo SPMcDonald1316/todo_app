@@ -7,6 +7,22 @@ const pool = require('./db');
 app.use(cors());
 app.use(express.json());
 
+//Router param
+app.param('id', async(req, res, next, id) => {
+  try {
+    const todo = await pool.query(
+      `SELECT * FROM todo WHERE id = ${id}`
+    );
+    if (todo) {
+      next();
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 
 //Routes
 
