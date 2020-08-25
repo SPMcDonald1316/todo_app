@@ -13,7 +13,9 @@ app.param('id', async(req, res, next, id) => {
     const todo = await pool.query(
       `SELECT * FROM todo WHERE id = ${id}`
     );
-    if (todo) {
+    console.log(todo);
+    if (todo.rows.length > 0) {
+      req.todo = todo.rows[0];
       next();
     } else {
       res.sendStatus(404);
@@ -53,6 +55,9 @@ app.post('/todos', async(req, res) => {
 });
 
 //Get one todo
+app.get('/todos/:id', async(req, res) => {
+  res.json(req.todo);
+});
 
 //Update a todo
 
