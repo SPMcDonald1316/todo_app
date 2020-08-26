@@ -21,7 +21,7 @@ app.param('id', async(req, res, next, id) => {
       res.sendStatus(404);
     }
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 });
 
@@ -36,9 +36,9 @@ app.get('/todos', async(req, res) => {
     );
     res.json(todoList.rows);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
-})
+});
 
 //Create todos
 app.post('/todos', async(req, res) => {
@@ -50,7 +50,7 @@ app.post('/todos', async(req, res) => {
     );
     res.json(todo.rows[0]);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 });
 
@@ -68,7 +68,7 @@ app.put('/todos/:id', async(req, res) => {
     );
     res.json(update.rows[0]);
   } catch (error) {
-    console.log(error.message)
+    console.error(error.message)
   }
 });
 
@@ -81,7 +81,7 @@ app.delete('/todos/:id', async(req, res) => {
     );
     res.sendStatus(204);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 });
 
