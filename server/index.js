@@ -61,7 +61,6 @@ app.get('/todos/:id', async(req, res) => {
 
 //Update a todo
 app.put('/todos/:id', async(req, res) => {
-
   try {
     const update = await pool.query(
       "UPDATE todo SET description = $1 WHERE id = $2 RETURNING *",
@@ -74,6 +73,17 @@ app.put('/todos/:id', async(req, res) => {
 });
 
 //Delete a todo
+app.delete('/todos/:id', async(req, res) => {
+  try {
+    await pool.query(
+      "DELETE FROM todo WHERE id = $1",
+      [req.params.id]
+    );
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 app.listen(4000, () => {
   console.log('Listening on port 4000');
