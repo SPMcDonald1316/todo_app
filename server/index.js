@@ -63,12 +63,12 @@ app.get('/todos/:id', async(req, res) => {
 app.put('/todos/:id', async(req, res) => {
   try {
     const update = await pool.query(
-      "UPDATE todo SET description = $1 WHERE id = $2 RETURNING *",
+      "UPDATE todo SET description = $1 WHERE id = $2",
       [req.body.description, req.params.id]
     );
-    res.json(update.rows[0]);
+    res.json("Updated Todo!");
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
 });
 
@@ -79,7 +79,7 @@ app.delete('/todos/:id', async(req, res) => {
       "DELETE FROM todo WHERE id = $1",
       [req.params.id]
     );
-    res.sendStatus(204);
+    res.json('Todo Deleted!');
   } catch (error) {
     console.error(error.message);
   }
