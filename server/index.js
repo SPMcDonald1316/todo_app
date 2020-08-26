@@ -13,7 +13,7 @@ app.param('id', async(req, res, next, id) => {
     const todo = await pool.query(
       `SELECT * FROM todo WHERE id = ${id}`
     );
-    console.log(todo);
+    // console.log(todo);
     if (todo.rows.length > 0) {
       req.todo = todo.rows[0];
       next();
@@ -60,6 +60,18 @@ app.get('/todos/:id', async(req, res) => {
 });
 
 //Update a todo
+app.put('/todos/:id', async(req, res) => {
+
+  try {
+    const update = await pool.query(
+      "UPDATE todo SET description = $1 WHERE id = $2 RETURNING *",
+      [req.body.description, req.params.id]
+    );
+    res.json(update.rows[0]);
+  } catch (error) {
+    console.log(error.message)
+  }
+});
 
 //Delete a todo
 
