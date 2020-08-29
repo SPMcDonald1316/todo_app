@@ -1,4 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
+import Edit from './Edit';
 
 const List = () => {
 
@@ -41,7 +42,9 @@ const List = () => {
           {todos.map(todo => (
             <tr key={todo.id}>
               <td>{todo.description}</td>
-              <td>Edit</td>
+              <td>
+                <Edit todo = {todo}/>
+              </td>
               <td>
                 <button 
                   className="btn btn-danger" 
