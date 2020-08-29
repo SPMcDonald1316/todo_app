@@ -10,6 +10,7 @@ function App() {
     <Fragment>
       <div className="container">
         <Input />
+        <List />
       </div>
     </Fragment>
   );
