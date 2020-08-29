@@ -1,10 +1,12 @@
 import React, {Fragment} from 'react';
-
 import './App.css';
+import Input from './components/Input'
 
 function App() {
   return (
-    <Fragment></Fragment>
+    <Fragment>
+      <Input />
+    </Fragment>
   );
 }
 
