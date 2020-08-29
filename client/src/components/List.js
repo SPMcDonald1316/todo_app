@@ -18,9 +18,8 @@ const List = () => {
     try {
       await fetch(`http://localhost:4000/todos/${id}`, {
         method: "DELETE"
-      }).then(response => response.json())
-        .then(response => console.log(response));
-      window.location = "/";
+      })
+      setTodos(todos.filter(todo => todo.id !== id));
     } catch (error) {
       console.error(error.message)
     }
@@ -46,7 +45,7 @@ const List = () => {
               <td>
                 <button 
                   className="btn btn-danger" 
-                  onClick={()=> deleteTodo(todo.id)}
+                  onClick={() => deleteTodo(todo.id)}
                 >
                   Delete
                 </button>
