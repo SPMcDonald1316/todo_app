@@ -13,7 +13,7 @@ const Input = () => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
       });
-      console.log(response);
+      window.location = "/";
     } catch (error) {
       console.error(error.message);
     }

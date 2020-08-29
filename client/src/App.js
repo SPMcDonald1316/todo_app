@@ -1,6 +1,9 @@
 import React, {Fragment} from 'react';
 import './App.css';
-import Input from './components/Input'
+
+//Components
+import Input from './components/Input';
+import List from './components/List';
 
 function App() {
   return (
