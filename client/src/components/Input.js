@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {Fragment, useState} from 'react'
 
 const Input = () => {
 
@@ -20,7 +20,7 @@ const Input = () => {
   }
 
   return (
-    <div>
+    <Fragment>
       <h1 className="text-center mt-5">Todo List</h1>
       <form className="d-flex mt-5" onSubmit={onSubmit}>
         <input 
@@ -31,7 +31,7 @@ const Input = () => {
         />
         <button className="btn btn-success">Add</button>
       </form>
-    </div>
+    </Fragment>
   )
 };
 
