@@ -10,7 +10,19 @@ const List = () => {
       const responseJSON = await response.json();
       setTodos(responseJSON);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
+    }
+  }
+
+  const deleteTodo = async(id) => {
+    try {
+      await fetch(`http://localhost:4000/todos/${id}`, {
+        method: "DELETE"
+      }).then(response => response.json())
+        .then(response => console.log(response));
+      window.location = "/";
+    } catch (error) {
+      console.error(error.message)
     }
   }
 
@@ -31,7 +43,14 @@ const List = () => {
             <tr key={todo.id}>
               <td>{todo.description}</td>
               <td>Edit</td>
-              <td>Delete</td>
+              <td>
+                <button 
+                  className="btn btn-danger" 
+                  onClick={()=> deleteTodo(todo.id)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
