@@ -23,27 +23,17 @@ const List = () => {
       <table className="table mt-5 text-center">
         <thead>
           <tr>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Things to do</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          {todos.map(todo => (
+            <tr key={todo.id}>
+              <td>{todo.description}</td>
+              <td>Edit</td>
+              <td>Delete</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Fragment>
